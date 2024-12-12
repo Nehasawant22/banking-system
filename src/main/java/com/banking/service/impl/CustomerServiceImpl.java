@@ -66,7 +66,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public String getCurrentBalanceByCustomerIdAndAccountNo(Long customerId, long accountNumber) {
+	public Account getCurrentBalanceByCustomerIdAndAccountNo(Long customerId, long accountNumber) {
 		String resp = "";
 		Optional<Account> accountOptional = accountRepository.findById(accountNumber);
 		Optional<Customer> customerOptional = customerRepository.findById(customerId);
@@ -75,7 +75,7 @@ public class CustomerServiceImpl implements CustomerService {
 					+ "\n";
 		}
 
-		return resp;
+		return accountOptional.get();
 	}
 
 	@Override

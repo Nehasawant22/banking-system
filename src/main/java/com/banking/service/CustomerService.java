@@ -11,7 +11,7 @@ public interface CustomerService {
 
 	public List<Account> getCurrentBalanceByCustomerId(Long customerId);
 
-	public String getCurrentBalanceByCustomerIdAndAccountNo(Long customerId, long accountNumber);
+	public Account getCurrentBalanceByCustomerIdAndAccountNo(Long customerId, long accountNumber);
 
 	public Customer updateCustomerDetails(Customer customer);
 

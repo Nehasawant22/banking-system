@@ -51,8 +51,8 @@ public class CustomerController {
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 	@GetMapping(value = "/customer/{custId}/{accNo}")
-	public ResponseEntity<String> getCurrentBalanceByCustomerIdAndAccountNo(@PathVariable  Long custId, @PathVariable  Long accNo){
-		String resp = customerService.getCurrentBalanceByCustomerIdAndAccountNo(custId,accNo);
+	public ResponseEntity<Account> getCurrentBalanceByCustomerIdAndAccountNo(@PathVariable  Long custId, @PathVariable  Long accNo){
+		Account resp = customerService.getCurrentBalanceByCustomerIdAndAccountNo(custId,accNo);
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 	
