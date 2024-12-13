@@ -56,15 +56,15 @@ public class CustomerController {
 		return new ResponseEntity<>(resp, HttpStatus.OK);
 	}
 	
-	@PutMapping(value = "/customer/{accountNumber}/{creditAmount}")
-	public ResponseEntity<String> creditAmountToAccount(@PathVariable Long accountNumber, @PathVariable Long creditAmount) {
-		String resp= accountService.creditAmountToAccount(accountNumber, creditAmount);
+	@PutMapping(value = "/customer/credit/{accountNumber}/{creditAmount}")
+	public ResponseEntity<Long> creditAmountToAccount(@PathVariable Long accountNumber, @PathVariable Long creditAmount) {
+		Long resp= accountService.creditAmountToAccount(accountNumber, creditAmount);
 		return new ResponseEntity<>(resp,HttpStatus.OK);
 	}
 	
 	@PutMapping(value = "/customer/debit/{accountNumber}/{debitAmount}")
-	public ResponseEntity<String> withdrawAmountFromAccount(@PathVariable Long accountNumber, @PathVariable Long debitAmount) {
-		String resp= accountService.withdrawAmountFromAccount(accountNumber, debitAmount);
+	public ResponseEntity<Long> withdrawAmountFromAccount(@PathVariable Long accountNumber, @PathVariable Long debitAmount) {
+		Long resp= accountService.withdrawAmountFromAccount(accountNumber, debitAmount);
 		return new ResponseEntity<>(resp,HttpStatus.OK);
 	}
 	

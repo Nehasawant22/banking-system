@@ -17,26 +17,26 @@ public class AccountServiceImpl implements AccountService {
 	@Autowired
 	private AccountRepository accountRepository;
 	@Override
-	public String creditAmountToAccount(Long accountNumber, Long creditAmount) {
+	public Long creditAmountToAccount(Long accountNumber, Long creditAmount) {
 		Optional<Account> accountOptional = accountRepository.findById(accountNumber);
 		if(accountOptional.isPresent()) {
 			Long updatedBalance=accountOptional.get().getCurrentBalance()+creditAmount;
 			accountOptional.get().setCurrentBalance(updatedBalance);
 			accountRepository.save(accountOptional.get());
-			return "Balance :"+updatedBalance;
+			return updatedBalance;
 		}
-		return "account not exist";
+		return (long) -1;
 	}
 	
 	@Override
-	public String withdrawAmountFromAccount(Long accountNumber, Long debitAmount) {
+	public Long withdrawAmountFromAccount(Long accountNumber, Long debitAmount) {
 		Optional<Account> accountOptional = accountRepository.findById(accountNumber);
 		if(accountOptional.isPresent()) {
-			Long updatedBalance=accountOptional.get().getCurrentBalance()+debitAmount;
+			Long updatedBalance=accountOptional.get().getCurrentBalance()-debitAmount;
 			accountOptional.get().setCurrentBalance(updatedBalance);
 			accountRepository.save(accountOptional.get());
-			return "Balance :"+updatedBalance;
+			return updatedBalance;
 		}
-		return "account not exist";
+		return (long) -1;
 	}
 }
